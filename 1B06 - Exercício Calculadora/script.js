@@ -26,8 +26,25 @@ const calculadora = {
  **********************/
 
 // Botão AC
-btnAC.addEventListener("click", () => {
-    limpaVariaveis(calculadora);
+document.addEventListener("keydown", (evento) => {
+    let teclaPressionada = evento.key
+    // console.log(evento.key)
+
+    let numeros = "0123456789."
+    let operadores = "+-*÷"
+    
+    if (numeros.includes(teclaPressionada)) {
+        adicionaNumero(calculadora, teclaPressionada)
+    }else if(operadores.includes(teclaPressionada)){
+        escolheOperador(calculadora, teclaPressionada == "/" ? "÷" : teclaPressionada)
+    }else if(teclaPressionada == "Enter"){
+        executaCalculo(calculadora);
+    }else if(teclaPressionada == "Delete"){
+        limpaVariaveis(calculadora);
+    }else if(teclaPressionada == "Backspace"){
+        apagaDigito(calculadora);
+    }
+
 });
 
 // Botão Delete
@@ -40,6 +57,11 @@ btnIgual.addEventListener("click", () => {
     executaCalculo(calculadora);
 });
 
+// Botão de igual
+btnAC.addEventListener("click", () => {
+    limpaVariaveis(calculadora);
+});
+
 // Botões de Numeros
 for (let i = 0; i < btnBotoes.length; i++){
     btnBotoes[i].addEventListener("click", () => {
@@ -48,11 +70,16 @@ for (let i = 0; i < btnBotoes.length; i++){
 }
 
 for (let o = 0; o < btnOperacoes.length; o++){
-        btnOperacoes[o].addEventListener("click", () => {
+    btnOperacoes[o].addEventListener("click", () => {
         escolheOperador(calculadora, btnOperacoes[o].innerText);
-    })}
+    });
+}
 
-    
+function atualizaDisplay(calculadora) {
+    calculadora.bufferTextoElemento.innerText = calculadora.displayTextoElemento.innerText 
+}
+
+
 function limpaVariaveis(calculadora) {
     calculadora.operandoAtual = ""
     calculadora.operador = ""
@@ -60,6 +87,7 @@ function limpaVariaveis(calculadora) {
     calculadora.bufferTextoElemento.innerText = ""
     calculadora.displayTextoElemento.innerText = ""
 }
+
 
 function adicionaNumero(calculadora, numero) {
     calculadora.operandoAtual = numero
@@ -86,20 +114,15 @@ function escolheOperador(calculadora, operador){
     }
 }
 
+
 function executaCalculo(calculadora) {
-    if (calculadora.operandoAnterior != "" && calculadora.operador != "" && calculadora.operandoAtual != ""){
-        calculadora.bufferTextoElemento.innerText = Number(calculadora.operandoAnterior) + (calculadora.operador) + Number(calculadora.displayTextoElemento.innerText)
-        if (calculadora.operador == "÷"){
-            calculadora.displayTextoElemento.innerText = eval((calculadora.operandoAnterior)  + "/" + (calculadora.displayTextoElemento.innerText))
-        } else{
-            console.log(calculadora.operandoAnterior,calculadora.operador,calculadora.operandoAtual)
-            calculadora.displayTextoElemento.innerText = eval((calculadora.operandoAnterior) + (calculadora.operador) + (calculadora.displayTextoElemento.innerText))
-        }
-        calculadora.operandoAtual = calculadora.displayTextoElemento.innerText
-        calculadora.operandoAnterior = ""
-    }
+    calculadora.bufferTextoElemento.innerText = Number(calculadora.operandoAnterior) + (calculadora.operador) + Number(calculadora.displayTextoElemento.innerText)
+    calculadora.displayTextoElemento.innerText = eval((calculadora.operandoAnterior)  + (calculadora.operador) + (calculadora.displayTextoElemento.innerText))
+    calculadora.operandoAtual = calculadora.displayTextoElemento.innerText
+    calculadora.operandoAnterior = ""
 }
 
-function apagaDigito(calculadora){
+
+function apagaDigito(calculadora) {
     calculadora.displayTextoElemento.innerText = calculadora.displayTextoElemento.innerText.slice(0,((calculadora.displayTextoElemento.innerText).length)-1)
 }
