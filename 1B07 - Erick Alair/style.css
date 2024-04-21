@@ -1,0 +1,66 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(90deg, rgba(2,0,143,1) 0%, rgba(235,0,255,1) 100%);
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25vh;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1vh;
+    width: 50%;
+    height: 40vh;
+}
+
+h1{
+    width: 100%;
+    color: rgb(98, 0, 255);
+    font-size: xx-large;
+}
+
+.campos-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 20vh;
+}
+
+.campos-container > label{
+    font-size: large;
+    margin: 1vh;
+    text-align: left;
+    width: 41vw;
+}
+
+.campos-container > textarea{
+    padding: 1vh;
+    font-size: x-large;
+    border-radius: 8px;
+    border-color: black;
+    width: 40vw;
+    height: 15vh;
+}
+
+.contador{
+    width: 100%;
+    height: auto;
+    color: gray;
+}
+
+button{
+    width: 10vw;
+    height: 10%;
+    border-radius: 5px;
+    color: white;
+    font-size: larger;
+    background: linear-gradient(90deg, rgba(2,0,143,1) 0%, rgba(235,0,255,1) 100%);
+    border: 0px;
+}
