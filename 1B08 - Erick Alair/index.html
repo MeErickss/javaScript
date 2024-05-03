@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./script.js" defer></script>
+    <title>Gerador de Link</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+    </style>
+        
+</head>
+<body>
+    <div class="container">
+        <div div-info class="infos">
+            <div class="head">
+                <h2>Gerador de Link </h2>
+                <i class="fa fa-whatsapp" style="font-size:60px;color:darkgreen"></i>
+            </div>
+            <div class="botoes">
+                <input class="telefone" inpt-tel type="tel" placeholder="Telefone" maxlength="11">
+                <button class="copia" btn-copia><i style="color: white; font-size: 21px;" class="material-icons">insert_link</i></button>
+                <button class="envia" btn-envia><i style="color: white; font-size: 21px;" class="material-icons">send</i></button>
+                <button class="predefinicao" predefinido><i class="fa fa-plus" style="font-size:21px" class="material-icons"></i></button>
+            </div>
+        </div>
+
+        <div div-resultado class="resultado">
+            <input inpt-copia class="txtcopia" type="text" readonly>
+            <p p>Clique no link para copiar</p>
+        </div>
+    </div>
+</body>
+</html> 
