@@ -103,3 +103,69 @@ h1, i {
     gap: var(--spacing);
     margin-top: 20px;
 }
+
+@media screen and (max-width: 800px){
+    .container {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: center;
+        flex-wrap: wrap;
+        background-color: var(--secondary-color);
+        border-radius: var(--radius);
+        width: 70vw;
+        height: 60vh;
+        padding: 2vh;
+    }
+
+    .head{
+        height: 25vh;
+    }
+
+    .botoes{
+        height: 1vh;
+    }
+
+    .telefone {
+        border: 2px solid var(--border-color);
+        color: var(--tel-color);
+        width: 65vw;
+        margin-right: var(--spacing);
+        font-size: 20px;
+        padding-left: 1vw;
+    }
+    
+    .copia, .envia, .predefinicao {
+        border: 0;
+        border-radius: 10px;
+        width: 18vw;
+        height: var(--height-button);
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .resultado{
+        display: block;
+        height: 10%;
+        font-size: 15px;
+    }
+
+    .txtcopia{
+        border: 2px solid var(--border-color);
+        color: var(--tel-color);
+        width: 60vw;
+        margin-right: var(--spacing);
+        font-size: 14px;
+        padding-left: 1vw;
+    }
+
+    .head{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .botoes{
+        gap: 3vh;
+    }
+}
