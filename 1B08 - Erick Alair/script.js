@@ -6,52 +6,68 @@ const inptRes = document.querySelector("[inpt-copia]")
 const pronto = document.querySelector("[predefinido]")
 const p = document.querySelector("[p]")
 
+tele.addEventListener("input", function(){
+    pronto.style = "display: none;"
+    teleCampo = tele.value
+    tele.value = tele.value.replace(/^(\d{2})(\d)/g, '($1) $2')
+    tele.value = tele.value.replace(/(\d{5})(\d)/,'$1-$2')
+})
 
-const copia = (evento) => {
-    try{
-        inptRes.value = "https://wa.me/" + teleCampo
-        divRes.style = "display: block;"
-    } catch (error){
-        alert("Valores Inválidos!")
-        console.log(error)
+tele.addEventListener("input", function(){
+    let tamanho = tele.value.length === 15
+    tele.value = tele.value.replace(/\D/g, "")
+    tele.style = tamanho ? "border-color:green;color:green;" : "border-color:red;color:red;" 
+})
+
+tele.addEventListener("click", function(){
+    divRes.style.display = "none"
+})
+
+tele.addEventListener("input", function(){
+    pronto.style = "display: none;"
+    teleCampo = tele.value
+    tele.value = tele.value.replace(/^(\d{2})(\d)/g, '($1) $2')
+    tele.value = tele.value.replace(/(\d{5})(\d)/,'$1-$2')
+})
+
+btnCopy.addEventListener("click", function(){
+    switch (tele.value.length) {
+        case 15:
+            inptRes.value = "https://wa.me/55" + teleCampo
+            divRes.style = "display: block;"
+            break;
+        default:
+            alert("Valores Inválidos!")
+            console.log(error)
+            break;
     }
-}
+})
 
-const envia = (evento) => {
-    try{
-        window.open("https://wa.me/" + teleCampo)
-    } catch(error){
-        alert("Valores Inválidos!")
-        console.log(error)
+btnSend.addEventListener("click", function(){
+    switch (tele.value.length) {
+        case 15:
+            window.open("https://wa.me/55" + teleCampo)
+            break
+        default:
+            alert("Valores Inválidos!")
+            console.log(error)
+            break
     }
-}
+})
 
-const txtcopia = (evento) => {
+inptRes.addEventListener("click", function(){
     navigator.clipboard.writeText(inptRes.value)
     p.innerText = "Link Copiado!"
-}
+    setTimeout(() => {
+        p.innerText = "Clique no link para copiar"
+    }, 4000)
+})
 
-const campos = (evento) => {
-    tele.value = tele.value.replace(/\D/g, "")
-    if(tele.value.length == 11){
-        pronto.style = "display: none;"
-        teleCampo = tele.value
-        tele.value = tele.value.replace(/(\d{2})(\d)/, "($1) $2")
-        tele.value = tele.value.replace(/(\d)(\d{4})$/,"$1-$2")
-        
-    }
-}
-
-const adicionar = (evento) => {
+pronto.addEventListener("click", function(){
     tele.value = "44912341234"
     teleCampo = tele.value
     tele.value = tele.value.replace(/(\d{2})(\d)/, "($1) $2")
     tele.value = tele.value.replace(/(\d)(\d{4})$/,"$1-$2")
+    tele.style = "border-color:green;color:green;"
     pronto.style = "display: none;"
-}
-
-tele.addEventListener("input", campos)
-btnCopy.addEventListener("click", copia)
-btnSend.addEventListener("click", envia)
-inptRes.addEventListener("click", txtcopia)
-pronto.addEventListener("click", adicionar)
+})

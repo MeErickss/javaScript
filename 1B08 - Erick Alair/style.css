@@ -12,7 +12,7 @@
     --spacing: 5px;
     --size-button: 3.5vw;
     --height-button: 7.5vh;
-    --size-res: 26.3vw;
+    --size-res: 26.8vw;
     --height-res: 1vh;
 }
 
@@ -48,7 +48,6 @@ body {
 
 .telefone {
     border: 2px solid var(--border-color);
-    color: var(--tel-color);
     width: var(--size-phone);
     margin-right: var(--spacing);
     font-size: 20px;
