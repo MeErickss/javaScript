@@ -63,6 +63,10 @@ body {
     color: white;
 }
 
+.copia:hover, .envia:hover{
+    border: 1px solid black;
+}
+
 .infos{
     height: 65%;
 }
@@ -76,6 +80,7 @@ body {
 }
 
 .txtcopia{
+    user-select: none;  /* Desabilitar a seleção do texto */
     border: 2px solid var(--border-color);
     border-radius: 5px;
     width: var(--size-res);
